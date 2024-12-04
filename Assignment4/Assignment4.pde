@@ -1,5 +1,5 @@
 Menu m = new Menu();
-Enemy e = new Enemy();
+Enemy e = new Enemy(false);
 Player p = new Player();
 //Number of image variable corresponds to button array number
 PImage b0, b1, b2, b3, b4, b5, b6, b7, b8, b9;
@@ -46,16 +46,22 @@ void setup()
   b9 = loadImage("runbutton.png");
   //Load enemy images
   e1 = loadImage("slime.png");
+  e2 = loadImage("grassmonster.png");
 }
 
 void draw()
 {
   frameRate(60);
   noStroke();
+  //println(e.generated);
   if (menuState == 0)
   {
     //Initialize background based on menu state
     image(bg, 0, 0);
+    e = new Enemy(false);
+    e.returnGenerated(false);
+    e.setGenerated(false);
+    e.generated = false;
     m.mainMenu();
   }
   if (menuState == 1)
