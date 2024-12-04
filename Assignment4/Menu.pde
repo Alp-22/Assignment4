@@ -20,7 +20,7 @@ class Menu
   int[] menuSizeY = {100, 100, 100, 200, 200, 200, 100, 100, 100, 100};
   PVector enemyPosition = new PVector(200, 150);
   PVector acceleration = new PVector(1, 0);
-  PVector velocity = new PVector(1, 0);
+  PVector velocity = new PVector(0, 1);
   int counter = 0;
   void mainMenu()
   {
@@ -75,15 +75,18 @@ class Menu
     e.generateEnemyGrass();
     image(e.generatedEnemy, enemyPosition.x, enemyPosition.y);
     counter++;
-    if (counter <= 10)
+    if (counter < 5)
     {
-      velocity.add(acceleration);
+      //velocity.add(acceleration);
       enemyPosition.add(velocity);
     }
-    if (counter >= 200)
+    if (counter > 5 && counter < 10)
     {
-      velocity.sub(acceleration);
-      enemyPosition.add(velocity);
+      //velocity.sub(acceleration);
+      enemyPosition.sub(velocity);
+    }
+    if (counter == 11)
+    {
       counter = 0;
     }
   }

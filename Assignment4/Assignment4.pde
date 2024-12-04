@@ -125,7 +125,7 @@ void mouseReleased()
     {
       e = new Enemy(false);
       tempHP = e.getStatsHP();
-      println(e.getStatsHP());
+      //println(e.getStatsHP());
       tempHPM = e.getStatsMaxHP();
       tempAtk = e.getStatsAttack();
       e.setStats(tempHP, tempHPM, tempAtk);
