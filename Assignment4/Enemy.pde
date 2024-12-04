@@ -24,7 +24,7 @@ class Enemy
   }
   void generateEnemyGrass()
   {
-    println(generated);
+    //println(generated);
     if (!generated)
     {
       float r = random(100);

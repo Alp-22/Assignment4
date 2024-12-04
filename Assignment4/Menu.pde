@@ -22,10 +22,12 @@ class Menu
   PVector acceleration = new PVector(1, 0);
   PVector velocity = new PVector(0, 1);
   int counter = 0;
+  boolean statGen;
   void mainMenu()
   {
     //Set enemy generation to false so another enemy can generate
     e = new Enemy(false);
+    statGen = false;
     fill(button[0]);
     //rect(menuX[0], menuY[0], menuSizeX[0], menuSizeY[0]);
     image(b0, menuX[0], menuY[0]);
@@ -73,6 +75,13 @@ class Menu
     image(b9, menuX[9], menuY[9]);
     noStroke();
     e.generateEnemyGrass();
+    if (!statGen)
+    {
+    tempHP = e.enemyHP;
+    tempHPM = e.enemyMaxHP;
+    tempAtk = e.enemyAttack;
+    statGen = true;
+    }
     image(e.generatedEnemy, enemyPosition.x, enemyPosition.y);
     counter++;
     if (counter < 5)

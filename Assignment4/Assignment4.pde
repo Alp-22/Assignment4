@@ -123,14 +123,12 @@ void mouseReleased()
   {
     if (mouseX >= m.menuX[6] && mouseX <= m.menuSizeX[6]+m.menuX[6] && mouseY >= m.menuY[6] && mouseY <= m.menuSizeY[6]+m.menuY[6])
     {
-      e = new Enemy(false);
-      tempHP = e.getStatsHP();
-      //println(e.getStatsHP());
-      tempHPM = e.getStatsMaxHP();
-      tempAtk = e.getStatsAttack();
-      e.setStats(tempHP, tempHPM, tempAtk);
       tempHP = tempHP - p.pAttack;
       println(tempHP);
+      //println(tempHP);
+      e.setStats(tempHP, tempHPM, tempAtk);
+      println(e.getStatsHP());
+      e = new Enemy(false);
       if (tempHP <= 0)
       {
         menuState = 0;
