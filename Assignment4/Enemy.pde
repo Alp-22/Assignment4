@@ -2,6 +2,7 @@ class Enemy
 {
   int enemyAttack;
   int enemyHP, enemyMaxHP;
+  int goldAmount;
   boolean generated = false;
   PImage generatedEnemy;
 
@@ -14,13 +15,15 @@ class Enemy
     enemyMaxHP = 10;
     enemyAttack = 1;
     generatedEnemy = e1;
+    goldAmount = 2;
   }
   void bigslime()
   {
     enemyHP = 20;
     enemyMaxHP = 20;
     enemyAttack = 2;
-    generatedEnemy = e1;
+    generatedEnemy = e2;
+    goldAmount = 5;
   }
   void grassMonster()
   {
@@ -28,6 +31,7 @@ class Enemy
     enemyMaxHP = 50;
     enemyAttack = 3;
     generatedEnemy = e3;
+    goldAmount = 10;
   }
   void grassEye()
   {
@@ -35,6 +39,15 @@ class Enemy
     enemyMaxHP = 100;
     enemyAttack = 5;
     generatedEnemy = e4;
+    goldAmount = 20;
+  }
+  void grassKnight()
+  {
+    enemyHP = 200;
+    enemyMaxHP = 200;
+    enemyAttack = 10;
+    generatedEnemy = e5;
+    goldAmount = 100;
   }
   void generateEnemyGrass()
   {
@@ -58,6 +71,10 @@ class Enemy
       {
         generated = true;
         grassEye();
+      } else
+      {
+        generated = true;
+        grassKnight();
       }
     }
   }

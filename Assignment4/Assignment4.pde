@@ -3,9 +3,9 @@ Enemy e = new Enemy(false);
 Player p = new Player();
 //Number of image variable corresponds to button array number
 PImage b0, b1, b2, b3, b4, b5, b6, b7, b8, b9;
+PImage logo, lock, life;
 PImage bg, bg1;
-PImage lock;
-PImage e1, e2, e3, e4;
+PImage e1, e2, e3, e4, e5;
 
 
 /*
@@ -33,6 +33,8 @@ void setup()
   size(800, 800);
   //Load lock image
   lock = loadImage("lock.png");
+  logo = loadImage("taprpg.png");
+  life = loadImage("life.png");
   //Load background images
   bg = loadImage("background.png");
   bg1 = loadImage("backgroundworld1.png");
@@ -50,6 +52,7 @@ void setup()
   e2 = loadImage("bigslime.png");
   e3 = loadImage("grassmonster.png");
   e4 = loadImage("grasseye.png");
+  e5 = loadImage("grassknight.png");
 }
 
 void draw()

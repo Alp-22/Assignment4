@@ -42,6 +42,7 @@ class Menu
     image(b2, menuX[2], menuY[2]);
     tint(255);
     image(lock, menuX[2]+150, menuY[2], 100, 100);
+    image(logo, 400, 0);
     //rect(menuX[2], menuY[2], menuSizeX[2], menuSizeY[2]);
   }
   void worldSelectionMenu()
@@ -86,7 +87,8 @@ class Menu
       tempAtk = e.enemyAttack;
       statGen = true;
     }
-    text(tempHP + "/" + tempHPM, 40, 120);
+    image(life, 0, 20, 100, 100);
+    text(tempHP + "/" + tempHPM, 120, 120);
     image(e.generatedEnemy, enemyPosition.x, enemyPosition.y);
     counter++;
     if (tempHP <= 0)
@@ -94,7 +96,6 @@ class Menu
       tempHP = 0;
       e = new Enemy(false);
       statGen = false;
-      
     }
     if (counter < 5)
     {
