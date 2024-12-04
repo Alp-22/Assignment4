@@ -7,9 +7,7 @@ PImage bg, bg1;
 PImage lock;
 PImage e1, e2, e3, e4;
 
-int pMaxHP = 10, pHP = 10;
-int pMaxMana = 10, pMana = 10;
-int pAttack = 1;
+
 /*
  0 = Main Menu
  1 = World Selection Menu
@@ -25,6 +23,9 @@ int menuState = 0;
  2 = ???
  */
 int worldState = 0;
+int tempHP;
+int tempHPM;
+int tempAtk;
 
 void setup()
 {
@@ -58,10 +59,6 @@ void draw()
   {
     //Initialize background based on menu state
     image(bg, 0, 0);
-    e = new Enemy(false);
-    e.returnGenerated(false);
-    e.setGenerated(false);
-    e.generated = false;
     m.mainMenu();
   }
   if (menuState == 1)
@@ -113,19 +110,31 @@ void mouseReleased()
     }
     if (mouseX >= m.menuX[4] && mouseX <= m.menuSizeX[4]+m.menuX[4] && mouseY >= m.menuY[4] && mouseY <= m.menuSizeY[4]+m.menuY[4])
     {
-      menuState = 2;
-      worldState = 1;
+      //menuState = 2;
+      //worldState = 1;
     }
     if (mouseX >= m.menuX[5] && mouseX <= m.menuSizeX[5]+m.menuX[5] && mouseY >= m.menuY[5] && mouseY <= m.menuSizeY[5]+m.menuY[5])
     {
-      menuState = 2;
-      worldState = 2;
+      //menuState = 2;
+      //worldState = 2;
     }
   }
   if (menuState == 2)
   {
     if (mouseX >= m.menuX[6] && mouseX <= m.menuSizeX[6]+m.menuX[6] && mouseY >= m.menuY[6] && mouseY <= m.menuSizeY[6]+m.menuY[6])
     {
+      e = new Enemy(false);
+      tempHP = e.getStatsHP();
+      println(e.getStatsHP());
+      tempHPM = e.getStatsMaxHP();
+      tempAtk = e.getStatsAttack();
+      e.setStats(tempHP, tempHPM, tempAtk);
+      tempHP = tempHP - p.pAttack;
+      println(tempHP);
+      if (tempHP <= 0)
+      {
+        menuState = 0;
+      }
     }
     if (mouseX >= m.menuX[7] && mouseX <= m.menuSizeX[7]+m.menuX[7] && mouseY >= m.menuY[7] && mouseY <= m.menuSizeY[7]+m.menuY[7])
     {

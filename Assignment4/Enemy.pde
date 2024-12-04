@@ -2,7 +2,7 @@ class Enemy
 {
   int enemyAttack;
   int enemyHP, enemyMaxHP;
-  boolean generated;
+  boolean generated = false;
   PImage generatedEnemy;
 
   Enemy(boolean g) {
@@ -39,12 +39,22 @@ class Enemy
       }
     }
   }
-  boolean returnGenerated(boolean g)
+   int getStatsAttack()
   {
-    return g;
+    return enemyAttack;
   }
-  void setGenerated(boolean g)
+  int getStatsHP()
   {
-    generated = g;
+    return enemyHP;
+  }
+  int getStatsMaxHP()
+  {
+    return enemyMaxHP;
+  }
+  void setStats(int hp, int hpM, int Atk)
+  {
+    enemyAttack = Atk;
+    enemyHP = hp;
+    enemyMaxHP = hpM;
   }
 }
