@@ -47,7 +47,9 @@ void setup()
   b9 = loadImage("runbutton.png");
   //Load enemy images
   e1 = loadImage("slime.png");
-  e2 = loadImage("grassmonster.png");
+  e2 = loadImage("bigslime.png");
+  e3 = loadImage("grassmonster.png");
+  e4 = loadImage("grasseye.png");
 }
 
 void draw()
@@ -131,7 +133,7 @@ void mouseReleased()
       e = new Enemy(false);
       if (tempHP <= 0)
       {
-        menuState = 0;
+        e.generated = false;
       }
     }
     if (mouseX >= m.menuX[7] && mouseX <= m.menuSizeX[7]+m.menuX[7] && mouseY >= m.menuY[7] && mouseY <= m.menuSizeY[7]+m.menuY[7])

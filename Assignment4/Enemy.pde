@@ -15,12 +15,26 @@ class Enemy
     enemyAttack = 1;
     generatedEnemy = e1;
   }
-  void grassMonster()
+  void bigslime()
   {
     enemyHP = 20;
     enemyMaxHP = 20;
+    enemyAttack = 2;
+    generatedEnemy = e1;
+  }
+  void grassMonster()
+  {
+    enemyHP = 50;
+    enemyMaxHP = 50;
     enemyAttack = 3;
-    generatedEnemy = e2;
+    generatedEnemy = e3;
+  }
+  void grassEye()
+  {
+    enemyHP = 100;
+    enemyMaxHP = 100;
+    enemyAttack = 5;
+    generatedEnemy = e4;
   }
   void generateEnemyGrass()
   {
@@ -28,18 +42,26 @@ class Enemy
     if (!generated)
     {
       float r = random(100);
-      if (r > 50 && r < 100)
+      if (r > 70 && r < 100)
       {
         generated = true;
         slime();
-      } else if (r < 50)
+      } else if (r > 40 && r < 69)
+      {
+        generated = true;
+        bigslime();
+      } else if (r > 10 && r < 39)
       {
         generated = true;
         grassMonster();
+      } else if (r < 9)
+      {
+        generated = true;
+        grassEye();
       }
     }
   }
-   int getStatsAttack()
+  int getStatsAttack()
   {
     return enemyAttack;
   }

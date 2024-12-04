@@ -73,17 +73,29 @@ class Menu
     image(lock, menuX[8]+150, menuY[8], 100, 100);
     rect(menuX[9], menuY[9], menuSizeX[9], menuSizeY[9]);
     image(b9, menuX[9], menuY[9]);
+    fill(255);
+    PFont sans = createFont("comicsans.ttf", 128);
+    textFont(sans);
+    textSize(128);
     noStroke();
     e.generateEnemyGrass();
     if (!statGen)
     {
-    tempHP = e.enemyHP;
-    tempHPM = e.enemyMaxHP;
-    tempAtk = e.enemyAttack;
-    statGen = true;
+      tempHP = e.enemyHP;
+      tempHPM = e.enemyMaxHP;
+      tempAtk = e.enemyAttack;
+      statGen = true;
     }
+    text(tempHP + "/" + tempHPM, 40, 120);
     image(e.generatedEnemy, enemyPosition.x, enemyPosition.y);
     counter++;
+    if (tempHP <= 0)
+    {
+      tempHP = 0;
+      e = new Enemy(false);
+      statGen = false;
+      
+    }
     if (counter < 5)
     {
       //velocity.add(acceleration);
