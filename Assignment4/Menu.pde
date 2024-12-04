@@ -1,5 +1,6 @@
 class Menu
 {
+  Enemy e = new Enemy();
   /*
   0 = Main Menu button
    1 = Shop Button
@@ -52,6 +53,8 @@ class Menu
     rect(menuX[9], menuY[9], menuSizeX[9], menuSizeY[9]);
     image(b9, menuX[9], menuY[9]);
     noStroke();
+    e.generateEnemyGrass();
+    image(e1, 100, 100);
   }
   void shopMenu()
   {

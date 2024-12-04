@@ -1,8 +1,15 @@
 Menu m = new Menu();
+Enemy e = new Enemy();
+Player p = new Player();
 //Number of image variable corresponds to button array number
 PImage b0, b1, b2, b3, b4, b5, b6, b7, b8, b9;
 PImage bg, bg1;
 PImage lock;
+PImage e1, e2, e3, e4;
+
+int pMaxHP = 10, pHP = 10;
+int pMaxMana = 10, pMana = 10;
+int pAttack = 1;
 /*
  0 = Main Menu
  1 = World Selection Menu
@@ -21,10 +28,14 @@ int worldState = 0;
 
 void setup()
 {
+  //Set window size
   size(800, 800);
+  //Load lock image
   lock = loadImage("lock.png");
+  //Load background images
   bg = loadImage("background.png");
   bg1 = loadImage("backgroundworld1.png");
+  //Load button images
   b0 = loadImage("adventure.png");
   b1 = loadImage("shop.png");
   b2 = loadImage("inventory.png");
@@ -33,6 +44,8 @@ void setup()
   b7 = loadImage("skillsbutton.png");
   b8 = loadImage("itemsbutton.png");
   b9 = loadImage("runbutton.png");
+  //Load enemy images
+  e1 = loadImage("slime.png");
 }
 
 void draw()
@@ -116,6 +129,7 @@ void mouseReleased()
     }
     if (mouseX >= m.menuX[9] && mouseX <= m.menuSizeX[9]+m.menuX[9] && mouseY >= m.menuY[9] && mouseY <= m.menuSizeY[9]+m.menuY[9])
     {
+      menuState = 0;
     }
   }
 }
