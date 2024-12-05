@@ -14,14 +14,17 @@ class Menu
    8 = Items Button
    9 = Run Button
    */
+   //Button arrays
   color[] button = {color(0, 0, 0), color(0, 0, 0), color(0, 0, 0), color(0, 0, 0), color(0, 0, 0), color(0, 0, 0), color(0, 0, 0), color(0, 0, 0)};
   int[] menuX = {0, 0, 0, 50, 300, 550, 0, 0, 400, 400};
   int[] menuY = {200, 400, 600, 300, 300, 300, 600, 700, 600, 700};
   int[] menuSizeX = {400, 400, 400, 200, 200, 200, 400, 400, 400, 400};
   int[] menuSizeY = {100, 100, 100, 200, 200, 200, 100, 100, 100, 100};
+  //PVector for enemy position and velocity to give a slight bobbing animation
   PVector enemyPosition = new PVector(200, 150);
   PVector acceleration = new PVector(1, 0);
   PVector velocity = new PVector(0, 1);
+  //Temporary variables to update data and counter
   int counter = 0;
   boolean statGen;
   int currentGold;
@@ -33,11 +36,13 @@ class Menu
     statGen = false;
     fill(button[0]);
     //rect(menuX[0], menuY[0], menuSizeX[0], menuSizeY[0]);
+    //Initialize button images
     image(b0, menuX[0], menuY[0]);
     fill(button[1]);
     tint(50);
     image(b1, menuX[1], menuY[1]);
     tint(255);
+    //Offset lock to be centered on menu
     image(lock, menuX[1]+150, menuY[1], 100, 100);
     //rect(menuX[1], menuY[1], menuSizeX[1], menuSizeY[1]);
     fill(button[2]);
@@ -57,6 +62,7 @@ class Menu
   }
   void worldSelectionMenu()
   {
+    //Initialize world selection menu and lock the unavailable worlds
     fill(150, 150, 150, 155);
     rect(menuX[3], menuY[3], menuSizeX[3], menuSizeY[3]);
     image(b3, menuX[3], menuY[3]);
@@ -67,6 +73,7 @@ class Menu
   }
   void fightMenu()
   {
+    //Initalize the fight menu and lock unavailable buttons
     fill(150);
     stroke(0);
     strokeWeight(8);
@@ -90,6 +97,7 @@ class Menu
     textSize(128);
     noStroke();
     e.generateEnemyGrass();
+    //Variable to control if enemy has been generated and stops it from continously generating over and over
     if (!statGen)
     {
       tempHP = e.enemyHP;
@@ -98,18 +106,21 @@ class Menu
       tempGold = p.pGold;
       statGen = true;
     }
+    //Set text for HP counter
     image(life, 0, 20, 100, 100);
     text(tempHP + "/" + tempHPM, 120, 120);
     image(e.generatedEnemy, enemyPosition.x, enemyPosition.y);
     counter++;
     if (tempHP <= 0)
     {
+      //Increase gold counter and generate a new enemy when current enemy is killed
       tempHP = 0;
       currentGold = tempGold + e.goldAmount;
       p = new Player(1, currentGold);
       e = new Enemy(false);
       statGen = false;
     }
+    //Counter script for bobbing animation up and down
     if (counter < 5)
     {
       //velocity.add(acceleration);
@@ -125,6 +136,7 @@ class Menu
       counter = 0;
     }
   }
+  //Defunct menus
   void shopMenu()
   {
   }

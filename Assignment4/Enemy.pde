@@ -100,6 +100,7 @@ class Enemy
   }*/
   void setStats(int hp, int hpM, int Atk)
   {
+    //Update enemy stats
     enemyAttack = Atk;
     enemyHP = hp;
     enemyMaxHP = hpM;
