@@ -1,5 +1,6 @@
 class Enemy
 {
+  //Enemy stats
   int enemyAttack;
   int enemyHP, enemyMaxHP;
   int goldAmount;
@@ -7,8 +8,10 @@ class Enemy
   PImage generatedEnemy;
 
   Enemy(boolean g) {
+    //Class constructor to define if the enemy has been generated
     generated = g;
   }
+  //Set enemy stats corresponding to enemy
   void slime()
   {
     enemyHP = 10;
@@ -54,6 +57,7 @@ class Enemy
     //println(generated);
     if (!generated)
     {
+      //Randomly generate a number between 0-100 to choose which enemy gets picked
       float r = random(100);
       if (r > 70 && r < 100)
       {
@@ -78,7 +82,7 @@ class Enemy
       }
     }
   }
-  int getStatsAttack()
+  /*int getStatsAttack()
   {
     return enemyAttack;
   }
@@ -90,6 +94,10 @@ class Enemy
   {
     return enemyMaxHP;
   }
+  int getGold()
+  {
+    return goldAmount;
+  }*/
   void setStats(int hp, int hpM, int Atk)
   {
     enemyAttack = Atk;

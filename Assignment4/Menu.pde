@@ -1,6 +1,7 @@
 class Menu
 {
   Enemy e = new Enemy(false);
+  Player p = new Player(1, 0);
   /*
   0 = Main Menu button
    1 = Shop Button
@@ -23,6 +24,8 @@ class Menu
   PVector velocity = new PVector(0, 1);
   int counter = 0;
   boolean statGen;
+  int currentGold;
+  int tempGold;
   void mainMenu()
   {
     //Set enemy generation to false so another enemy can generate
@@ -43,6 +46,13 @@ class Menu
     tint(255);
     image(lock, menuX[2]+150, menuY[2], 100, 100);
     image(logo, 400, 0);
+    PFont sans = createFont("comicsans.ttf", 128);
+    textFont(sans);
+    textSize(96);
+    noStroke();
+    fill(255);
+    text(currentGold, 600, 750);
+    image(gold, 500, 665, 100, 100);
     //rect(menuX[2], menuY[2], menuSizeX[2], menuSizeY[2]);
   }
   void worldSelectionMenu()
@@ -85,6 +95,7 @@ class Menu
       tempHP = e.enemyHP;
       tempHPM = e.enemyMaxHP;
       tempAtk = e.enemyAttack;
+      tempGold = p.pGold;
       statGen = true;
     }
     image(life, 0, 20, 100, 100);
@@ -94,6 +105,8 @@ class Menu
     if (tempHP <= 0)
     {
       tempHP = 0;
+      currentGold = tempGold + e.goldAmount;
+      p = new Player(1, currentGold);
       e = new Enemy(false);
       statGen = false;
     }
